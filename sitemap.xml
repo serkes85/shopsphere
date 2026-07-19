@@ -1,9 +1,44 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
     <loc>https://serkes85.github.io/shopsphere/</loc>
     <lastmod>2026-07-19</lastmod>
-    <changefreq>weekly</changefreq>
+    <changefreq>daily</changefreq>
     <priority>1.0</priority>
+    <xhtml:link rel="alternate" hreflang="tr" href="https://t.me/techdeals_tr_bot?start=tr"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://t.me/techdeals_tr_bot?start=en"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://t.me/techdeals_tr_bot?start=de"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://t.me/techdeals_tr_bot?start=fr"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://t.me/techdeals_tr_bot?start=es"/>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://t.me/techdeals_tr_bot?start=ar"/>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://t.me/techdeals_tr_bot?start=ru"/>
+    <xhtml:link rel="alternate" hreflang="ja" href="https://t.me/techdeals_tr_bot?start=ja"/>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://t.me/techdeals_tr_bot?start=ko"/>
+    <xhtml:link rel="alternate" hreflang="zh" href="https://t.me/techdeals_tr_bot?start=zh"/>
+    <xhtml:link rel="alternate" hreflang="pt" href="https://t.me/techdeals_tr_bot?start=pt"/>
+    <xhtml:link rel="alternate" hreflang="hi" href="https://t.me/techdeals_tr_bot?start=hi"/>
+    <xhtml:link rel="alternate" hreflang="id" href="https://t.me/techdeals_tr_bot?start=id"/>
+    <xhtml:link rel="alternate" hreflang="th" href="https://t.me/techdeals_tr_bot?start=th"/>
+    <xhtml:link rel="alternate" hreflang="vi" href="https://t.me/techdeals_tr_bot?start=vi"/>
+    <xhtml:link rel="alternate" hreflang="it" href="https://t.me/techdeals_tr_bot?start=it"/>
+    <xhtml:link rel="alternate" hreflang="nl" href="https://t.me/techdeals_tr_bot?start=nl"/>
+    <xhtml:link rel="alternate" hreflang="pl" href="https://t.me/techdeals_tr_bot?start=pl"/>
+    <xhtml:link rel="alternate" hreflang="sv" href="https://t.me/techdeals_tr_bot?start=sv"/>
+    <xhtml:link rel="alternate" hreflang="uk" href="https://t.me/techdeals_tr_bot?start=uk"/>
+    <xhtml:link rel="alternate" hreflang="ur" href="https://t.me/techdeals_tr_bot?start=ur"/>
+    <xhtml:link rel="alternate" hreflang="ms" href="https://t.me/techdeals_tr_bot?start=ms"/>
+    <xhtml:link rel="alternate" hreflang="he" href="https://t.me/techdeals_tr_bot?start=he"/>
+  </url>
+  <url>
+    <loc>https://t.me/techdeals_tr_bot</loc>
+    <lastmod>2026-07-19</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://t.me/shopsphere_deals_1</loc>
+    <lastmod>2026-07-19</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.8</priority>
   </url>
 </urlset>
