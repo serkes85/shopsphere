@@ -11,8 +11,8 @@ import subprocess, sys, os, time, signal, glob, shutil, urllib.request, urllib.e
 
 BOT_DIR = os.path.expanduser("~/techdeals-bot")
 BOT_TOKEN = "8858951980:AAHzLRLqOlxsAcXXn_GM_XdkUnWWC0aTEIo"
-LOCK_FILE = "/tmp/shopsphere_supervisor.lock"
-PID_FILE = "/tmp/shopsphere_supervisor.pid"
+LOCK_FILE = os.path.expanduser("~/shopsphere_supervisor.lock")
+PID_FILE = os.path.expanduser("~/shopsphere_bot.pid")
 MY_PID = os.getpid()
 
 def log(m):
