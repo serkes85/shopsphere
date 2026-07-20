@@ -59,41 +59,68 @@ def clean_lock():
         pass
 
 def kill_old():
-    """Eski surecleri DURDUR - once while loop, sonra bot"""
-    log("🔪 Eski surecler durduruluyor (5 tur)...")
+    """Eski surecleri DURDUR - KENDI PID'mi atl!"""
+    log(f"🔪 Eski surecler durduruluyor (5 tur)... [Benim PID: {MY_PID}]")
     
     for i in range(5):
         # ONCE while true döngülerini oldur (onlar bot'u yeniden baslatiyor!)
         subprocess.run(["pkill", "-9", "-f", "while true"], capture_output=True)
-        subprocess.run(["pkill", "-9", "-f", "while true; do python"], capture_output=True)
         
-        # Sonra supervisor sureclerini oldur
-        subprocess.run(["pkill", "-9", "-f", "supervisor.py"], capture_output=True)
+        # Eski supervisor sureclerini oldur - AMA KENDINI DEGIL!
+        try:
+            result = subprocess.run(["pgrep", "-f", "supervisor.py"], capture_output=True, text=True)
+            for pid_str in result.stdout.strip().split('\n'):
+                pid_str = pid_str.strip()
+                if not pid_str:
+                    continue
+                try:
+                    pid = int(pid_str)
+                    if pid != MY_PID:
+                        os.kill(pid, 9)
+                        log(f"  Eski supervisor PID {pid} olduruldu")
+                except (ValueError, ProcessLookupError, PermissionError):
+                    pass
+        except Exception as e:
+            log(f"  Supervisor temizleme hatasi: {e}")
         
-        # Sonra bot sureclerini oldur
+        # Bot sureclerini oldur
         subprocess.run(["pkill", "-9", "-f", "bot.py"], capture_output=True)
-        subprocess.run(["pkill", "-9", "-f", "python3 bot.py"], capture_output=True)
-        subprocess.run(["pkill", "-9", "-f", "python bot.py"], capture_output=True)
         
         # Sleep sureclerini temizle
         subprocess.run(["pkill", "-9", "-f", "sleep 15"], capture_output=True)
         subprocess.run(["pkill", "-9", "-f", "sleep 5"], capture_output=True)
         
-        # Flask sureclerini temizle
-        subprocess.run(["pkill", "-9", "-f", "flask"], capture_output=True)
+        # Flask sureclerini temizle (bot.py alt süreci olarak)
+        try:
+            result = subprocess.run(["pgrep", "-f", "flask"], capture_output=True, text=True)
+            for pid_str in result.stdout.strip().split('\n'):
+                pid_str = pid_str.strip()
+                if not pid_str:
+                    continue
+                try:
+                    pid = int(pid_str)
+                    # Flask bot.py'nin alt süreci, ana sürece ait olmayabilir
+                    os.kill(pid, 9)
+                except (ValueError, ProcessLookupError, PermissionError):
+                    pass
+        except:
+            pass
         
         time.sleep(1)
         
-        # Kontrol
-        result = subprocess.run(["ps", "aux"], capture_output=True, text=True)
-        remaining = [l for l in result.stdout.split('\n') 
-                     if ('bot.py' in l or 'supervisor.py' in l) and 'grep' not in l and str(MY_PID) not in l]
-        
-        if not remaining:
-            log(f"  Tur {i+1}: Tum surecler temizlendi ✓")
+        # Kontrol - sadece bot.py ve supervisor.py (benim PID haric)
+        try:
+            result = subprocess.run(["ps", "aux"], capture_output=True, text=True)
+            remaining = [l for l in result.stdout.split('\n') 
+                         if ('bot.py' in l or 'supervisor.py' in l) and 'grep' not in l and str(MY_PID) not in l]
+            
+            if not remaining:
+                log(f"  Tur {i+1}: Tum surecler temizlendi ✓")
+                break
+            else:
+                log(f"  Tur {i+1}: {len(remaining)} surec hala calisiyor, tekrar deneniyor...")
+        except:
             break
-        else:
-            log(f"  Tur {i+1}: {len(remaining)} surec hala calisiyor, tekrar deneniyor...")
     
     # Telegram webhook temizle - 409 Conflict cozumu
     log("🌐 Telegram webhook temizleniyor...")
