@@ -4,56 +4,77 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>ShopSphere — Telegram Marketplace</title>
-<meta name="description" content="ShopSphere: 114 ürün, 15 kategori, ilk dükkan için 20 gün ücretsiz deneme. ShopSphere para tutmaz veya transfer yapmaz.">
+<meta name="description" content="ShopSphere: 114 ürün, 15 kategori, 20 gün ücretsiz dükkan denemesi. Telegram'da keşfet, sat ve alışveriş yap.">
 <style>
-body{margin:0;font-family:Arial,sans-serif;background:#08111f;color:#eef6ff}
-main{max-width:900px;margin:auto;padding:24px}
-.hero{padding:55px 25px;text-align:center;border-radius:22px;background:linear-gradient(135deg,#132c50,#14213b)}
-h1{font-size:48px;margin:10px 0}h2{margin-top:42px}
-p{line-height:1.6;color:#c4d4ec}.btn{display:inline-block;margin:8px;padding:14px 20px;border-radius:12px;background:#31cf91;color:#04150e;text-decoration:none;font-weight:bold}.btn.alt{background:#284367;color:#fff}
-.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:14px}
-.card{background:#101e33;border:1px solid #27415f;padding:18px;border-radius:14px}
-.num{font-size:30px;color:#5ee5b5;font-weight:bold}
-footer{text-align:center;padding:35px;color:#8fa8c8}
+:root{--bg:#070b18;--card:#10182d;--line:#263554;--text:#f4f8ff;--muted:#9fb0ca;--green:#48e0aa;--blue:#6d8cff;--purple:#c087ff}
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:var(--bg);color:var(--text);font-family:Inter,Arial,sans-serif;overflow-x:hidden}
+body:before,body:after{content:"";position:fixed;width:520px;height:520px;border-radius:50%;filter:blur(120px);opacity:.22;z-index:-1}
+body:before{background:#315dff;top:-240px;left:-180px}body:after{background:#4de5ae;right:-200px;top:220px}
+.wrap{max-width:1120px;margin:auto;padding:22px}
+nav{display:flex;align-items:center;justify-content:space-between;padding:10px 0 35px}.brand{font-weight:900;font-size:22px;letter-spacing:.5px}.brand span{color:var(--green)}
+nav a{color:var(--muted);text-decoration:none;font-size:14px}
+.hero{padding:72px 28px;text-align:center;border:1px solid var(--line);border-radius:30px;background:radial-gradient(circle at 50% 0,#1c315f 0,#101a31 40%,#0d1427 100%);box-shadow:0 25px 80px #0007}
+.badge{display:inline-flex;gap:8px;padding:8px 13px;border:1px solid #49658d;border-radius:99px;color:#bcd3f5;background:#182845;font-size:13px}
+h1{font-size:clamp(42px,7vw,78px);line-height:1.03;margin:23px auto;max-width:900px;letter-spacing:-2px}.gradient{background:linear-gradient(90deg,#6e9cff,#75f2c4,#c88eff);-webkit-background-clip:text;background-clip:text;color:transparent}
+.lead{max-width:670px;margin:0 auto 25px;color:var(--muted);font-size:19px;line-height:1.6}
+.btn{display:inline-block;padding:15px 22px;margin:7px;border-radius:13px;text-decoration:none;font-weight:800;transition:.2s}.btn:hover{transform:translateY(-3px)}.primary{background:linear-gradient(135deg,#42dca7,#66efa7);color:#06130e;box-shadow:0 12px 30px #37d4974d}.secondary{color:#eef5ff;background:#1c2b47;border:1px solid #3c5278}
+.stats{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-top:42px}.stat{padding:17px;border:1px solid #2b3c5b;border-radius:16px;background:#0d172b}.stat b{display:block;font-size:27px;color:var(--green)}.stat span{color:var(--muted);font-size:13px}
+section{margin-top:75px}h2{font-size:33px;margin-bottom:10px}.sub{color:var(--muted);line-height:1.6;max-width:690px}
+.grid{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-top:25px}.card{padding:20px;background:linear-gradient(145deg,#15223a,#0d1527);border:1px solid var(--line);border-radius:18px}.icon{font-size:30px}.card h3{margin:12px 0 8px}.card p{color:var(--muted);font-size:14px;line-height:1.5;margin:0}
+.payment{padding:30px;border-radius:22px;border:1px solid #335174;background:linear-gradient(120deg,#102944,#10201f)}.payment strong{color:#79f0c1}.methods{display:flex;flex-wrap:wrap;gap:9px;margin-top:20px}.method{padding:9px 12px;border-radius:99px;background:#192b43;border:1px solid #38597e;color:#cfe4ff;font-size:13px}
+.categories{display:flex;flex-wrap:wrap;gap:10px;margin-top:20px}.cat{padding:12px 15px;border-radius:13px;background:#111c31;border:1px solid #2d4162;color:#c8d8ef}
+.cta{padding:54px 28px;text-align:center;border-radius:25px;background:linear-gradient(135deg,#202c69,#255b5f);border:1px solid #5069ad}footer{text-align:center;color:#7185a5;padding:45px 0 20px;font-size:13px}
+@media(max-width:760px){nav{padding-bottom:20px}.hero{padding:48px 17px}.stats{grid-template-columns:repeat(2,1fr)}.grid{grid-template-columns:repeat(2,1fr)}h2{font-size:28px}}@media(max-width:430px){.grid{grid-template-columns:1fr}.wrap{padding:14px}h1{letter-spacing:-1px}}
 </style>
 </head>
 <body>
-<main>
+<main class="wrap">
+<nav><div class="brand">🌐 Shop<span>Sphere</span></div><a href="https://t.me/shopsphere_deals_1">Fırsat Kanalı ↗</a></nav>
+
 <section class="hero">
-<div>🌐 SHOPSPHERE</div>
-<h1>Telegram'da keşfet, sat ve alışveriş yap.</h1>
-<p>114 ürün • 15 kategori • İlk dükkan için 20 gün ücretsiz deneme</p>
-<a class="btn" href="https://t.me/techdeals_tr_bot?start=web_home">🚀 Botu Aç</a>
-<a class="btn alt" href="https://t.me/shopsphere_deals_1">📢 Fırsat Kanalı</a>
+<div class="badge">✨ Telegram Marketplace · Yeni Nesil Alışveriş</div>
+<h1>Keşfet. Sat. <span class="gradient">Bağlan.</span></h1>
+<p class="lead">114 güncel fırsatı incele, 15 kategoride dükkanını aç ve ilk dükkanın için 20 gün ücretsiz denemeyle başla.</p>
+<a class="btn primary" href="https://t.me/techdeals_tr_bot?start=web_home">🚀 ShopSphere'ı Aç</a>
+<a class="btn secondary" href="https://t.me/shopsphere_deals_1">📢 Fırsatları Gör</a>
+<div class="stats">
+<div class="stat"><b>114</b><span>Ürün & fırsat</span></div>
+<div class="stat"><b>15</b><span>Dükkan kategorisi</span></div>
+<div class="stat"><b>20 gün</b><span>İlk dükkan trial</span></div>
+<div class="stat"><b>23</b><span>Dil desteği</span></div>
+</div>
 </section>
 
-<h2>Neler var?</h2>
-<section class="grid">
-<div class="card"><div class="num">114</div><b>Ürün ve fırsat</b><p>Güncel seed ürünleri ve mağaza ilanları.</p></div>
-<div class="card"><div class="num">15</div><b>Dükkan kategorisi</b><p>Elektronik, ev, oto, moda, spor, bebek, hobi ve daha fazlası.</p></div>
-<div class="card"><div class="num">20 gün</div><b>İlk dükkan trial</b><p>İlk dükkan için ücretsiz deneme ve ürün ekleme avantajı.</p></div>
-<div class="card"><div class="num">AI</div><b>Bot içi destek</b><p>Telegram'da <b>/destek</b> yazarak yardım alın.</p></div>
+<section>
+<h2>Tek Telegram botunda <span class="gradient">ticaret deneyimi</span></h2>
+<p class="sub">Ürünleri keşfet, dükkan aç, satıcıları incele ve bot içinden AI destek al.</p>
+<div class="grid">
+<div class="card"><div class="icon">🏪</div><h3>Dükkanını Aç</h3><p>İlk dükkanın için 20 gün ücretsiz deneme ile ürünlerini ekle.</p></div>
+<div class="card"><div class="icon">🔎</div><h3>Fırsatları Keşfet</h3><p>Teknoloji, ev, moda, oto, spor ve daha fazla kategoride ürün ara.</p></div>
+<div class="card"><div class="icon">💬</div><h3>AI Destek</h3><p>Bot içinde <b>/destek</b> yazarak hızlı yardım al.</p></div>
+<div class="card"><div class="icon">🌍</div><h3>Global Kullanım</h3><p>23 dil, yerel ülke ve para birimi görünümü.</p></div>
+</div>
 </section>
 
-<h2>Ödeme güvenliği</h2>
-<section class="card">
-<p><b>ShopSphere para almaz, para tutmaz ve transfer yapmaz.</b></p>
-<p>Ödemeler alıcı ve satıcı arasında veya seçilen lisanslı harici sağlayıcı üzerinden yapılır.</p>
-<p>Türkiye: FAST, EFT, Havale, IBAN, Papara, kapıda ödeme veya elden teslim.</p>
-<p>Uluslararası: Wise, Revolut, SEPA Instant, PayPal Goods &amp; Services veya lisanslı ödeme linkleri.</p>
-<p>Ödeme öncesinde satıcı puanı, yorumlar, ürün açıklaması ve teslimat koşullarını kontrol edin.</p>
+<section>
+<h2>15 kategori, tek başlangıç noktası</h2>
+<div class="categories">
+<div class="cat">📱 Elektronik</div><div class="cat">💻 Bilgisayar</div><div class="cat">🎧 Ses</div><div class="cat">🎮 Oyun</div><div class="cat">📷 Kamera</div><div class="cat">🏠 Ev</div><div class="cat">🚗 Oto</div><div class="cat">🧺 Beyaz Eşya</div><div class="cat">🛋️ Mobilya</div><div class="cat">👕 Moda</div><div class="cat">💄 Güzellik</div><div class="cat">⚽ Spor</div><div class="cat">👶 Bebek</div><div class="cat">📚 Hobi</div><div class="cat">📦 Diğer</div>
+</div>
 </section>
 
-<h2>Nasıl başlarım?</h2>
-<section class="grid">
-<div class="card"><b>1. Botu aç</b><p>Telegram'da ShopSphere botuna gir ve /start yaz.</p></div>
-<div class="card"><b>2. Ürünleri keşfet</b><p>Kategorileri, fırsatları ve satıcıları incele.</p></div>
-<div class="card"><b>3. Dükkanını aç</b><p>15 kategoriden birini seç, ilk dükkanın için 20 gün trial kullan.</p></div>
+<section class="payment">
+<h2>🤝 Ödeme güvenliği</h2>
+<p>ShopSphere <strong>para almaz, para tutmaz ve transfer yapmaz.</strong> Alıcı ve satıcı, doğrudan veya seçtikleri lisanslı harici ödeme sağlayıcısı üzerinden anlaşır.</p>
+<div class="methods"><div class="method">FAST / EFT / IBAN</div><div class="method">Wise</div><div class="method">Revolut</div><div class="method">SEPA Instant</div><div class="method">PayPal G&S</div><div class="method">Kapıda Ödeme</div><div class="method">Elden Teslim</div><div class="method">Ödeme Linki</div></div>
 </section>
 
-<h2>Fırsatları kaçırma</h2>
-<p>Yeni ürünler ve kampanyalar için Deals kanalına katıl.</p>
-<a class="btn" href="https://t.me/shopsphere_deals_1">📢 Fırsat Kanalına Katıl</a>
+<section class="cta">
+<h2>Bugünün fırsatlarını kaçırma.</h2>
+<p>Deals kanalına katıl, yeni ürünleri ve bot gelişmelerini takip et.</p>
+<a class="btn primary" href="https://t.me/shopsphere_deals_1">📢 Kanala Katıl</a>
+<a class="btn secondary" href="https://t.me/techdeals_tr_bot?start=web_footer">🤖 Botu Aç</a>
+</section>
 
 <footer>ShopSphere · Telegram Marketplace · Para tutmaz, ödeme işlemez.</footer>
 </main>
